@@ -31,7 +31,7 @@ function Open-NvimDistribution()
 function Open-NvimDistributionConfig()
 {
   $nvim_configs = @(Get-EnvNvimDistributions)
-  [string]$config = $nvim_configs | fzf --prompt=" Edit Neovim Config  " --height=~50% --layout=reverse --border --exit-0
+  [string]$config = $nvim_configs | fzf --prompt="Edit Neovim Config" --height=~50% --layout=reverse --border --exit-0
 
   # If the string is either empty or "Main" was selected, set the config to an empty string
   if ([string]::IsNullOrEmpty($config) -or ($config.ToLower() -eq $nvim_main_config.ToLower())) 
@@ -156,9 +156,8 @@ function Remove-NvimDistribution()
 
   Remove-EnvNvimDistribution $distribution
 
-  Write-Host "Successfully removed the '$distribution' distribution!"
+  Write-Host "Successfully removed the '$distribution' distribution"
 }
 
 Export-ModuleMember -Alias * -Function Open-NvimDistribution, Open-NvimDistributionConfig, Import-NvimDistribution, Remove-NvimDistribution
-
 
